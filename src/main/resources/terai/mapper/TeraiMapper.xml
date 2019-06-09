@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="terai.mapper.TeraiMapper">
+    <update id="dropSchema" parameterType="string">
+        DROP SCHEMA ${schema} CASCADE;
+        CREATE SCHEMA ${schema};
+    </update>
+    <update id="createTable" parameterType="string">
+        ${query}
+    </update>
+    <update id="insertConst" parameterType="string">
+        ${query}
+    </update>
+</mapper>
