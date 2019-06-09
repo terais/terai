@@ -33,6 +33,12 @@ public class TeraiLogicImpl implements TeraiLogic {
     }
     @Override
     public TeraiDto getFileNameList(String path, String type) {
+        String extension = "";
+        if (type.equals("CREATE")) {
+            extension = ".*.sql";
+        } else {
+            extension = ".*Const.sql";
+        }
         File file = new File(path);
         File files[] = file.listFiles();
         TeraiDto getFileNameDto = new TeraiDto();
@@ -40,7 +46,7 @@ public class TeraiLogicImpl implements TeraiLogic {
             getFileNameDto.setErrorFlag(false);
             ArrayList<String> target = new ArrayList<String>();
             for (int i=0; i<files.length; i++) {
-                if (files[i].toString().matches(".*.sql")) {
+                if (files[i].toString().matches(extension)) {
                     target.add(files[i].toString());
                 }
             }
